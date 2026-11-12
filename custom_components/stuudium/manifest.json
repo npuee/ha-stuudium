@@ -1,6 +1,9 @@
 {
   "domain": "stuudium",
   "name": "Stuudium",
+  "categories": [
+    "productivity_information"
+  ],
   "codeowners": [
     "@npuee"
   ],

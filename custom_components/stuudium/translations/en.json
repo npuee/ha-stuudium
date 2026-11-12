@@ -1,0 +1,47 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Stuudium",
+        "description": "Each school has its own Stuudium address – the one in your browser's address bar when you are logged in, for example `myschool.ope.ee`. You can paste the whole address.\n\nAll children linked to your parent account are added automatically. For a child at another school, add Stuudium again with that school's address.",
+        "data": {
+          "host": "School's Stuudium address"
+        },
+        "data_description": {
+          "host": "e.g. myschool.ope.ee or https://myschool.ope.ee/s/123"
+        }
+      },
+      "cookies": {
+        "title": "Log in with your browser",
+        "description": "Home Assistant can't type your password (Stuudium's login page has a captcha), so it borrows the login from your browser instead.\n\n1. On a computer, open [{login_url}]({login_url}) and log in with **\"Logi mind tulevikus automaatselt sisse\"** switched on.\n2. Press **F12** (Mac: **⌥⌘I**) → **Application** tab (Firefox: **Storage**) → **Cookies** → `https://{host}`.\n3. In the **Name** column find **`_stdmss`**, double-click its **Value**, copy it and paste it below.\n\n**Tip:** a whole `Cookie:` header or **Copy as cURL** from the Network tab works too – the right cookie is picked out automatically.\n\nDon't press *Logi välja* in that browser afterwards, that would end this login too.",
+        "data": {
+          "session_cookie": "Value of the _stdmss cookie"
+        },
+        "data_description": {
+          "session_cookie": "A long string of letters and numbers, e.g. a7714...c0. Only the value, not the name."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Stuudium login expired",
+        "description": "The login for {host} has ended. Log in again and paste the new value.\n\nHome Assistant can't type your password (Stuudium's login page has a captcha), so it borrows the login from your browser instead.\n\n1. On a computer, open [{login_url}]({login_url}) and log in with **\"Logi mind tulevikus automaatselt sisse\"** switched on.\n2. Press **F12** (Mac: **⌥⌘I**) → **Application** tab (Firefox: **Storage**) → **Cookies** → `https://{host}`.\n3. In the **Name** column find **`_stdmss`**, double-click its **Value**, copy it and paste it below.\n\n**Tip:** a whole `Cookie:` header or **Copy as cURL** from the Network tab works too – the right cookie is picked out automatically.\n\nDon't press *Logi välja* in that browser afterwards, that would end this login too.",
+        "data": {
+          "session_cookie": "Value of the _stdmss cookie"
+        },
+        "data_description": {
+          "session_cookie": "A long string of letters and numbers, e.g. a7714...c0. Only the value, not the name."
+        }
+      }
+    },
+    "error": {
+      "invalid_host": "That doesn't look like a web address. Expected something like myschool.ope.ee.",
+      "invalid_cookie": "Nothing usable was found in what was pasted. Copy the Value of the _stdmss cookie.",
+      "missing_session": "The pasted text has cookies, but not _stdmss – that's the one Home Assistant needs.",
+      "invalid_auth": "Stuudium did not accept these cookies (it showed the login page). Log in again in the browser and copy fresh values.",
+      "cannot_connect": "Could not reach the Stuudium site. Check the address."
+    },
+    "abort": {
+      "already_configured": "This Stuudium account is already set up.",
+      "reauth_successful": "Login refreshed."
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "domain": "stuudium",
+  "name": "Stuudium",
+  "codeowners": [
+    "@npuee"
+  ],
+  "config_flow": true,
+  "dependencies": [
+    "frontend",
+    "http"
+  ],
+  "documentation": "https://github.com/npuee/ha-stuudium",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/npuee/ha-stuudium/issues",
+  "loggers": [
+    "custom_components.stuudium"
+  ],
+  "requirements": [
+    "beautifulsoup4>=4.12.0"
+  ],
+  "version": "1.2.0"
+}

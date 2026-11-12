@@ -13,7 +13,7 @@
       },
       "cookies": {
         "title": "Logi sisse brauseri kaudu",
-        "description": "Home Assistant ei saa sinu parooli sisestada (Stuudiumi sisselogimisel on robotikontroll), seega kasutab ta sinu brauseri sisselogimist.\n\n1. Ava arvutis [{login_url}]({login_url}) ja logi sisse nii, et **\"Logi mind tulevikus automaatselt sisse\"** on sisse lülitatud.\n2. Vajuta **F12** (Mac: **⌥⌘I**) → vahekaart **Application** (Firefox: **Storage**) → **Cookies** → `https://{host}`.\n3. Leia veerust **Name** küpsis **`_stdmss`**, tee topeltklõps selle väärtusel (**Value**), kopeeri ja kleebi allolevasse välja.\n\n**Nipp:** sobib ka terve `Cookie:` päis või Network-vahekaardilt **Copy as cURL** – õige küpsis leitakse ise üles.\n\nÄra vajuta pärast seda selles brauseris *Logi välja*, see lõpetaks ka selle sisselogimise.",
+        "description": "Home Assistant ei saa sinu parooli sisestada (Stuudiumi sisselogimisel on robotikontroll), seega kasutab ta sinu brauseri sisselogimist.\n\n1. Ava arvutis [{login_url}]({login_url}) ja logi sisse nii, et **\"Logi mind tulevikus automaatselt sisse\"** on sisse lülitatud.\n2. Vajuta **F12** (Mac: **⌥⌘I**) → vahekaart **Application** (Firefox: **Storage**) → **Cookies** → `{site_url}`.\n3. Leia veerust **Name** küpsis **`_stdmss`**, tee topeltklõps selle väärtusel (**Value**), kopeeri ja kleebi allolevasse välja.\n\n**Nipp:** sobib ka terve `Cookie:` päis või Network-vahekaardilt **Copy as cURL** – õige küpsis leitakse ise üles.\n\nÄra vajuta pärast seda selles brauseris *Logi välja*, see lõpetaks ka selle sisselogimise.",
         "data": {
           "session_cookie": "Küpsise _stdmss väärtus"
         },
@@ -23,7 +23,7 @@
       },
       "reauth_confirm": {
         "title": "Stuudiumi sisselogimine aegus",
-        "description": "Kooli {host} sisselogimine on lõppenud. Logi uuesti sisse ja kleebi uus väärtus.\n\nHome Assistant ei saa sinu parooli sisestada (Stuudiumi sisselogimisel on robotikontroll), seega kasutab ta sinu brauseri sisselogimist.\n\n1. Ava arvutis [{login_url}]({login_url}) ja logi sisse nii, et **\"Logi mind tulevikus automaatselt sisse\"** on sisse lülitatud.\n2. Vajuta **F12** (Mac: **⌥⌘I**) → vahekaart **Application** (Firefox: **Storage**) → **Cookies** → `https://{host}`.\n3. Leia veerust **Name** küpsis **`_stdmss`**, tee topeltklõps selle väärtusel (**Value**), kopeeri ja kleebi allolevasse välja.\n\n**Nipp:** sobib ka terve `Cookie:` päis või Network-vahekaardilt **Copy as cURL** – õige küpsis leitakse ise üles.\n\nÄra vajuta pärast seda selles brauseris *Logi välja*, see lõpetaks ka selle sisselogimise.",
+        "description": "Kooli {host} sisselogimine on lõppenud. Logi uuesti sisse ja kleebi uus väärtus.\n\nHome Assistant ei saa sinu parooli sisestada (Stuudiumi sisselogimisel on robotikontroll), seega kasutab ta sinu brauseri sisselogimist.\n\n1. Ava arvutis [{login_url}]({login_url}) ja logi sisse nii, et **\"Logi mind tulevikus automaatselt sisse\"** on sisse lülitatud.\n2. Vajuta **F12** (Mac: **⌥⌘I**) → vahekaart **Application** (Firefox: **Storage**) → **Cookies** → `{site_url}`.\n3. Leia veerust **Name** küpsis **`_stdmss`**, tee topeltklõps selle väärtusel (**Value**), kopeeri ja kleebi allolevasse välja.\n\n**Nipp:** sobib ka terve `Cookie:` päis või Network-vahekaardilt **Copy as cURL** – õige küpsis leitakse ise üles.\n\nÄra vajuta pärast seda selles brauseris *Logi välja*, see lõpetaks ka selle sisselogimise.",
         "data": {
           "session_cookie": "Küpsise _stdmss väärtus"
         },

@@ -58,7 +58,7 @@ class StuudiumConfigFlow(ConfigFlow, domain=DOMAIN):
         self._host: str | None = None
 
     def _placeholders(self, host: str) -> dict[str, str]:
-        return {"host": host, "login_url": f"https://{host}/auth/"}
+        return {"host": host, "site_url": f"https://{host}", "login_url": f"https://{host}/auth/"}
 
     async def _validate(self, host: str, cookies: dict[str, str]) -> tuple[str | None, StuudiumClient | None]:
         if not cookies:

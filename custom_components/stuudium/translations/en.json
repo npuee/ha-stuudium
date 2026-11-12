@@ -13,7 +13,7 @@
       },
       "cookies": {
         "title": "Log in with your browser",
-        "description": "Home Assistant can't type your password (Stuudium's login page has a captcha), so it borrows the login from your browser instead.\n\n1. On a computer, open [{login_url}]({login_url}) and log in with **\"Logi mind tulevikus automaatselt sisse\"** switched on.\n2. Press **F12** (Mac: **⌥⌘I**) → **Application** tab (Firefox: **Storage**) → **Cookies** → `https://{host}`.\n3. In the **Name** column find **`_stdmss`**, double-click its **Value**, copy it and paste it below.\n\n**Tip:** a whole `Cookie:` header or **Copy as cURL** from the Network tab works too – the right cookie is picked out automatically.\n\nDon't press *Logi välja* in that browser afterwards, that would end this login too.",
+        "description": "Home Assistant can't type your password (Stuudium's login page has a captcha), so it borrows the login from your browser instead.\n\n1. On a computer, open [{login_url}]({login_url}) and log in with **\"Logi mind tulevikus automaatselt sisse\"** switched on.\n2. Press **F12** (Mac: **⌥⌘I**) → **Application** tab (Firefox: **Storage**) → **Cookies** → `{site_url}`.\n3. In the **Name** column find **`_stdmss`**, double-click its **Value**, copy it and paste it below.\n\n**Tip:** a whole `Cookie:` header or **Copy as cURL** from the Network tab works too – the right cookie is picked out automatically.\n\nDon't press *Logi välja* in that browser afterwards, that would end this login too.",
         "data": {
           "session_cookie": "Value of the _stdmss cookie"
         },
@@ -23,7 +23,7 @@
       },
       "reauth_confirm": {
         "title": "Stuudium login expired",
-        "description": "The login for {host} has ended. Log in again and paste the new value.\n\nHome Assistant can't type your password (Stuudium's login page has a captcha), so it borrows the login from your browser instead.\n\n1. On a computer, open [{login_url}]({login_url}) and log in with **\"Logi mind tulevikus automaatselt sisse\"** switched on.\n2. Press **F12** (Mac: **⌥⌘I**) → **Application** tab (Firefox: **Storage**) → **Cookies** → `https://{host}`.\n3. In the **Name** column find **`_stdmss`**, double-click its **Value**, copy it and paste it below.\n\n**Tip:** a whole `Cookie:` header or **Copy as cURL** from the Network tab works too – the right cookie is picked out automatically.\n\nDon't press *Logi välja* in that browser afterwards, that would end this login too.",
+        "description": "The login for {host} has ended. Log in again and paste the new value.\n\nHome Assistant can't type your password (Stuudium's login page has a captcha), so it borrows the login from your browser instead.\n\n1. On a computer, open [{login_url}]({login_url}) and log in with **\"Logi mind tulevikus automaatselt sisse\"** switched on.\n2. Press **F12** (Mac: **⌥⌘I**) → **Application** tab (Firefox: **Storage**) → **Cookies** → `{site_url}`.\n3. In the **Name** column find **`_stdmss`**, double-click its **Value**, copy it and paste it below.\n\n**Tip:** a whole `Cookie:` header or **Copy as cURL** from the Network tab works too – the right cookie is picked out automatically.\n\nDon't press *Logi välja* in that browser afterwards, that would end this login too.",
         "data": {
           "session_cookie": "Value of the _stdmss cookie"
         },

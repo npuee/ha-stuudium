@@ -94,6 +94,11 @@ class StuudiumConfigFlow(ConfigFlow, domain=DOMAIN):
             data_schema=vol.Schema(
                 {vol.Required(CONF_HOST): TextSelector(TextSelectorConfig(type=TextSelectorType.URL))}
             ),
+            # URLs must not be inside translation strings (hassfest)
+            description_placeholders={
+                "example_host": "myschool.ope.ee",
+                "example_url": "https://myschool.ope.ee/s/123",
+            },
             errors=errors,
         )
 

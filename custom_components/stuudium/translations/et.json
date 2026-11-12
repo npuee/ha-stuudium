@@ -8,7 +8,7 @@
           "host": "Kooli Stuudiumi aadress"
         },
         "data_description": {
-          "host": "nt myschool.ope.ee või https://myschool.ope.ee/s/123"
+          "host": "nt {example_host} või {example_url}"
         }
       },
       "cookies": {

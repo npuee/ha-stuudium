@@ -8,7 +8,7 @@
           "host": "School's Stuudium address"
         },
         "data_description": {
-          "host": "e.g. myschool.ope.ee or https://myschool.ope.ee/s/123"
+          "host": "e.g. {example_host} or {example_url}"
         }
       },
       "cookies": {

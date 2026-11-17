@@ -59,13 +59,18 @@ Go to **Settings → Devices & services → Add integration → Stuudium**.
       **"Logi mind tulevikus automaatselt sisse"** switched on.
    2. Press **F12** → **Application** (Firefox: **Storage**) → **Cookies** →
       `https://myschool.ope.ee`.
-   3. Copy the **Value** of the **`_stdmss`** cookie and paste it into the form.
+   3. Copy the **Value** of each of the two cookies into its own box:
+      - **`_stdmss`**: the login itself (required).
+      - **`__stclid`**: the "log me in automatically" cookie, valid for about a month
+        (recommended).
 
-   A whole `Cookie:` header, or **Copy as cURL** from the Network tab, works too.
+   A whole `Cookie:` header, or **Copy as cURL** from the Network tab, also works in the
+   first box.
 
 Don't click *Logi välja* in that browser afterwards, because that ends this session too.
-When the session expires, Home Assistant shows a **re-authenticate** prompt with the
-same steps.
+Stuudium ends a login 48 hours after it starts. When that happens, Home Assistant shows
+a **re-authenticate** prompt with the same steps. You can also paste new cookies at any
+time with **Settings → Devices & services → Stuudium → ⋮ → Reconfigure**.
 
 For a child at a different school, add the integration again with that school's
 address.
@@ -127,8 +132,8 @@ The first refresh after a restart does not fire events, so old grades are not re
 
 ## Privacy
 
-- The session cookie is stored in Home Assistant's config entry, like any other
-  integration credential. It gives access to the parent account, so treat it like a
+- The login cookies are stored in Home Assistant's config entry, like any other
+  integration credential. They give access to the parent account, so treat it like a
   password.
 - Home Assistant only talks to your school's Stuudium site. Nothing is sent anywhere
   else.

@@ -1,10 +1,10 @@
 """Config flow for Stuudium.
 
-Step 1 asks for the school's Stuudium address, step 2 for the session cookie
-(_stdmss) with step-by-step instructions. The field takes either just the
-cookie's value or anything containing cookies (Cookie header, Copy as cURL,
-extension export...). _stdmss is the login itself; __stclid is only a
-client id and is not needed.
+Step 1 asks for the school's Stuudium address, step 2 for the two cookies in
+separate fields: _stdmss (the session, required) and __stclid (the
+remember-me cookie, optional). Each field takes just the cookie's value; the
+first one also accepts anything containing cookies (Cookie header, Copy as
+cURL, extension export...).
 """
 from __future__ import annotations
 
@@ -19,6 +19,7 @@ from homeassistant.helpers.aiohttp_client import async_create_clientsession
 from homeassistant.helpers.selector import TextSelector, TextSelectorConfig, TextSelectorType
 
 from .api import (
+    AUTOLOGIN_COOKIE,
     SESSION_COOKIE,
     StuudiumAuthError,
     StuudiumClient,
@@ -30,25 +31,29 @@ from .api import (
 from .const import CONF_COOKIE, CONF_HOST, DOMAIN
 
 FIELD = "session_cookie"
+FIELD_AUTOLOGIN = "autologin_cookie"
+FIELDS = ((FIELD, SESSION_COOKIE), (FIELD_AUTOLOGIN, AUTOLOGIN_COOKIE))
 
 
 def _cookie_schema(defaults: Mapping[str, str] | None = None) -> vol.Schema:
     defaults = defaults or {}
+    text = TextSelector(TextSelectorConfig(type=TextSelectorType.TEXT))
     return vol.Schema(
         {
-            vol.Required(FIELD, default=defaults.get(FIELD, "")): TextSelector(
-                TextSelectorConfig(type=TextSelectorType.TEXT)
-            )
+            vol.Required(FIELD, default=defaults.get(FIELD, "")): text,
+            vol.Optional(FIELD_AUTOLOGIN, default=defaults.get(FIELD_AUTOLOGIN, "")): text,
         }
     )
 
 
 def cookies_from_form(user_input: Mapping[str, Any]) -> dict[str, str]:
-    """A bare value is the _stdmss value; anything else is parsed for cookies."""
-    value = str(user_input.get(FIELD) or "").strip()
-    if not value:
-        return {}
-    return extract_cookies(value) or {SESSION_COOKIE: value.strip('"').strip("'")}
+    """A bare value belongs to the field's cookie; anything else is parsed for cookies."""
+    cookies: dict[str, str] = {}
+    for field, name in FIELDS:
+        value = str(user_input.get(field) or "").strip()
+        if value:
+            cookies.update(extract_cookies(value) or {name: value.strip('"').strip("'")})
+    return cookies
 
 
 class StuudiumConfigFlow(ConfigFlow, domain=DOMAIN):
@@ -121,6 +126,28 @@ class StuudiumConfigFlow(ConfigFlow, domain=DOMAIN):
             step_id="cookies",
             data_schema=_cookie_schema(user_input),
             description_placeholders=self._placeholders(self._host),
+            errors=errors,
+        )
+
+    async def async_step_reconfigure(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
+        """Paste new cookies at any time (Settings -> Stuudium -> Reconfigure)."""
+        entry = self._get_reconfigure_entry()
+        host = entry.data[CONF_HOST]
+        errors: dict[str, str] = {}
+        if user_input is not None:
+            error, client = await self._validate(host, cookies_from_form(user_input))
+            if error:
+                errors["base"] = error
+            else:
+                await self.async_set_unique_id(client.user_guid)
+                self._abort_if_unique_id_mismatch(reason="wrong_account")
+                return self.async_update_reload_and_abort(
+                    entry, data_updates={CONF_COOKIE: cookies_to_text(client.cookies)}
+                )
+        return self.async_show_form(
+            step_id="reconfigure",
+            data_schema=_cookie_schema(user_input),
+            description_placeholders=self._placeholders(host),
             errors=errors,
         )
 

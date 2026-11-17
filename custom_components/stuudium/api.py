@@ -60,10 +60,11 @@ def parse_cookie_text(text: str) -> dict[str, str]:
     return cookies
 
 
-SESSION_COOKIE = "_stdmss"  # the login session – the only cookie that is needed
-# __stclid is a client id (login timestamp + hash), bid is set on the login page;
-# both are kept when pasted but are not required.
-KNOWN_COOKIES = (SESSION_COOKIE, "__stclid", "bid")
+SESSION_COOKIE = "_stdmss"  # the login session, ends 48 h after logging in
+# With "Logi mind tulevikus automaatselt sisse" switched on, __stclid is the
+# browser's remember-me cookie (about 30 days). bid is set on the login page.
+AUTOLOGIN_COOKIE = "__stclid"
+KNOWN_COOKIES = (SESSION_COOKIE, AUTOLOGIN_COOKIE, "bid")
 
 
 def extract_cookies(text: str) -> dict[str, str]:

@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0
+
+- The login form has two separate boxes, one for `_stdmss` and one for `__stclid` (the
+  "log me in automatically" cookie), instead of one box for everything.
+- New **Reconfigure** option to paste new login cookies at any time.
+- The setup text explains that Stuudium ends a login after 48 hours.
+
 ## 1.0.0
 
 First public release.

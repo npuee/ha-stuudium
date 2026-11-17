@@ -13,22 +13,38 @@
       },
       "cookies": {
         "title": "Log in with your browser",
-        "description": "Home Assistant can't type your password (Stuudium's login page has a captcha), so it borrows the login from your browser instead.\n\n1. On a computer, open [{login_url}]({login_url}) and log in with **\"Logi mind tulevikus automaatselt sisse\"** switched on.\n2. Press **F12** (Mac: **⌥⌘I**) → **Application** tab (Firefox: **Storage**) → **Cookies** → `{site_url}`.\n3. In the **Name** column find **`_stdmss`**, double-click its **Value**, copy it and paste it below.\n\n**Tip:** a whole `Cookie:` header or **Copy as cURL** from the Network tab works too – the right cookie is picked out automatically.\n\nDon't press *Logi välja* in that browser afterwards, that would end this login too.",
+        "description": "Home Assistant can't type your password (Stuudium's login page has a captcha), so it borrows the login from your browser instead.\n\n1. On a computer, open [{login_url}]({login_url}) and log in with **\"Logi mind tulevikus automaatselt sisse\"** switched on.\n2. Press **F12** (Mac: **⌥⌘I**) → **Application** tab (Firefox: **Storage**) → **Cookies** → `{site_url}`.\n3. There are two cookies. Double-click the **Value** of each one, copy it and paste it into its own box below:\n   - **`_stdmss`** – the login itself (required)\n   - **`__stclid`** – the \"log me in automatically\" cookie, valid for about a month (recommended)\n\nDon't press *Logi välja* in that browser afterwards, that would end this login too.",
         "data": {
-          "session_cookie": "Value of the _stdmss cookie"
+          "session_cookie": "Value of the _stdmss cookie",
+          "autologin_cookie": "Value of the __stclid cookie"
         },
         "data_description": {
-          "session_cookie": "A long string of letters and numbers, e.g. a7714...c0. Only the value, not the name."
+          "session_cookie": "A long string of letters and numbers. Only the value, not the name. A whole `Cookie:` header or Copy as cURL also works here.",
+          "autologin_cookie": "Optional but recommended: starts with digits, e.g. 1763..."
         }
       },
       "reauth_confirm": {
         "title": "Stuudium login expired",
-        "description": "The login for {host} has ended. Log in again and paste the new value.\n\nHome Assistant can't type your password (Stuudium's login page has a captcha), so it borrows the login from your browser instead.\n\n1. On a computer, open [{login_url}]({login_url}) and log in with **\"Logi mind tulevikus automaatselt sisse\"** switched on.\n2. Press **F12** (Mac: **⌥⌘I**) → **Application** tab (Firefox: **Storage**) → **Cookies** → `{site_url}`.\n3. In the **Name** column find **`_stdmss`**, double-click its **Value**, copy it and paste it below.\n\n**Tip:** a whole `Cookie:` header or **Copy as cURL** from the Network tab works too – the right cookie is picked out automatically.\n\nDon't press *Logi välja* in that browser afterwards, that would end this login too.",
+        "description": "The login for {host} has ended. Log in again and paste the new values.\n\nHome Assistant can't type your password (Stuudium's login page has a captcha), so it borrows the login from your browser instead.\n\n1. On a computer, open [{login_url}]({login_url}) and log in with **\"Logi mind tulevikus automaatselt sisse\"** switched on.\n2. Press **F12** (Mac: **⌥⌘I**) → **Application** tab (Firefox: **Storage**) → **Cookies** → `{site_url}`.\n3. There are two cookies. Double-click the **Value** of each one, copy it and paste it into its own box below:\n   - **`_stdmss`** – the login itself (required)\n   - **`__stclid`** – the \"log me in automatically\" cookie, valid for about a month (recommended)\n\nDon't press *Logi välja* in that browser afterwards, that would end this login too.",
         "data": {
-          "session_cookie": "Value of the _stdmss cookie"
+          "session_cookie": "Value of the _stdmss cookie",
+          "autologin_cookie": "Value of the __stclid cookie"
         },
         "data_description": {
-          "session_cookie": "A long string of letters and numbers, e.g. a7714...c0. Only the value, not the name."
+          "session_cookie": "A long string of letters and numbers. Only the value, not the name. A whole `Cookie:` header or Copy as cURL also works here.",
+          "autologin_cookie": "Optional but recommended: starts with digits, e.g. 1763..."
+        }
+      },
+      "reconfigure": {
+        "title": "Update Stuudium login",
+        "description": "Paste new login cookies for {host}.\n\n1. On a computer, open [{login_url}]({login_url}) and log in with **\"Logi mind tulevikus automaatselt sisse\"** switched on.\n2. Press **F12** (Mac: **⌥⌘I**) → **Application** tab (Firefox: **Storage**) → **Cookies** → `{site_url}`.\n3. There are two cookies. Double-click the **Value** of each one, copy it and paste it into its own box below:\n   - **`_stdmss`** – the login itself (required)\n   - **`__stclid`** – the \"log me in automatically\" cookie, valid for about a month (recommended)\n\nDon't press *Logi välja* in that browser afterwards, that would end this login too.",
+        "data": {
+          "session_cookie": "Value of the _stdmss cookie",
+          "autologin_cookie": "Value of the __stclid cookie"
+        },
+        "data_description": {
+          "session_cookie": "A long string of letters and numbers. Only the value, not the name. A whole `Cookie:` header or Copy as cURL also works here.",
+          "autologin_cookie": "Optional but recommended: starts with digits, e.g. 1763..."
         }
       }
     },
@@ -41,7 +57,9 @@
     },
     "abort": {
       "already_configured": "This Stuudium account is already set up.",
-      "reauth_successful": "Login refreshed."
+      "reauth_successful": "Login refreshed.",
+      "reconfigure_successful": "Login updated.",
+      "wrong_account": "These cookies belong to a different Stuudium account."
     }
   }
 }
